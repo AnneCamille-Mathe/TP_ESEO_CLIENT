@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>Commander un taxi</title>
+</head>
+
+<body>
+<!-- Page Content -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3 class="mt-5">Reserve ton taxi en moins de 30 secondes</h3>
+          	<b>Merci d'utiliser notre service de taxi, veuillez remplir les informations suivantes :</b><br>
+          <p>L'application numéro des taxis en France</p>
+        </div>
+      </div>
+    </div>
+
+
+	<form method="post" action="connexionServlet">
+		Catégorie de véhicule : 
+		<select name="categorie"> 
+			<option value="minibus"> mini-bus (7 places) </option>
+			<option value="voiture"> voiture (5 places) </option>
+		</select>
+		<br>
+		Ville choisie : <input type="text" required name="villeChoisie"/> <br>
+		Date de réservation : <input type="date" required name="date"/> <br>	<br>	
+		<input type="submit" value="envoyer"/>	
+	</form>
+</section>
+  
+</body>
+
+
+</html>

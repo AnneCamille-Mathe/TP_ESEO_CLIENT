@@ -11,17 +11,31 @@
 </head>
 <body>
 
-	Voici les villes disponibles :
 	<br>
-	<ul>
-		<%
-			ArrayList<Ville> liste = (ArrayList) session.getAttribute("villes");
-		for (Ville ville : liste) {
-		%>
-		VILLE = <%=ville.getNomCommune()%>
-		<%
-			}
-		%>
-	</ul>
+	<FORM method="post" action="calculDistance">
+		<SELECT name="ville1" size="1">
+			<%
+				ArrayList<Ville> liste1 = (ArrayList) session.getAttribute("villes");
+			for (Ville ville : liste1) {
+			%>
+			<OPTION>
+				<%=ville.getNomCommune()%>
+				<%
+					}
+				%>
+			
+		</SELECT> <SELECT name="ville2" size="1">
+			<%
+				ArrayList<Ville> liste2 = (ArrayList) session.getAttribute("villes");
+			for (Ville ville : liste2) {
+			%>
+			<OPTION>
+				<%=ville.getNomCommune()%>
+				<%
+					}
+				%>
+			
+		</SELECT> <input type="submit" value="Calcul de la distance">
+	</FORM>
 </body>
 </html>

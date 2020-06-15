@@ -12,6 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 /**
  * Servlet implementation class calculDistance
  */
@@ -55,11 +63,33 @@ public class calculDistance extends HttpServlet {
 			}
 		}
 
-		DecimalFormat df = new DecimalFormat("###.##");
-		double distance = this.calculDistance(latitude1, longitude1, latitude2, longitude2);
-		session.setAttribute("distance", df.format(distance));
-		RequestDispatcher req = request.getRequestDispatcher("AffichageDistance.jsp");
-		req.forward(request, response);
+		if (request.getParameter("action").equals("Calcul de la distance")) {
+
+			DecimalFormat df = new DecimalFormat("###.##");
+			double distance = this.calculDistance(latitude1, longitude1, latitude2, longitude2);
+			session.setAttribute("distance", df.format(distance));
+			RequestDispatcher req = request.getRequestDispatcher("AffichageDistance.jsp");
+			req.forward(request, response);
+		} else {
+			HttpResponse<JsonNode> reponse;
+			String url = "http://api.openweathermap.org/data/2.5/weather?APPID=2129170164288096a566a7b4580ed806&lat=46.1331001556&lon=4.99858455549";
+			try {
+				DecimalFormat df = new DecimalFormat("###.##");
+				reponse = Unirest.get(url).asJson();
+				JsonElement jArray = JsonParser.parseString(reponse.getBody().toString());
+				JsonObject rootObject = jArray.getAsJsonObject();
+				String tempFVille1 = rootObject.getAsJsonObject("main").get("temp").toString();
+				double tempCVille1 = this.fahrenheitToCelcius(Double.parseDouble(tempFVille1));
+				session.setAttribute("tempsVille1", df.format(tempCVille1));
+				
+			} catch (UnirestException e) {
+				e.printStackTrace();
+			}
+			session.setAttribute("villes", villes);
+
+			RequestDispatcher req = request.getRequestDispatcher("voirMeteo.jsp");
+			req.forward(request, response);
+		}
 	}
 
 	public double calculDistance(String latitude1, String longitude1, String latitude2, String longitude2) {
@@ -73,6 +103,10 @@ public class calculDistance extends HttpServlet {
 				+ Math.cos(Math.toRadians(b2)) * Math.cos(Math.toRadians(b3)) * Math.cos(Math.toRadians(c2 - c3)))
 				* 6371;
 		return distance;
+	}
+
+	public double fahrenheitToCelcius(double temp) {
+		return temp - 273.15;
 	}
 
 }

@@ -13,7 +13,7 @@
 </head>
 
 <!-- Page Content -->
-<body>
+<body style="background-color: aliceblue;">
 	<br>
 	<div class="container">
 		<div class="card border-0 shadow my-5">
@@ -22,7 +22,6 @@
 					villes</h1>
 				<p class="lead">Merci d'utiliser notre service de calcul,
 					veuillez choisir les villes :</p>
-				</p>
 				<div style="height: 400px">
 					<br> <br>
 					<div class="row vertical-offset-100">
@@ -61,9 +60,11 @@
 													
 												</SELECT> <br> <br> <input
 													class="btn btn-lg btn-primary btn-block" type="submit"
-													value="Calcul de la distance">
+													value="Calcul de la distance" name="action">
 											</div>
 										</fieldset>
+										<input class="btn btn-lg btn-primary btn-block" type="submit"
+											value="Voir la météo" name="action">
 									</FORM>
 								</div>
 							</div>
@@ -73,7 +74,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Bootstrap core JavaScript -->
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"

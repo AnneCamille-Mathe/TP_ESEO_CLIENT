@@ -71,17 +71,27 @@ public class calculDistance extends HttpServlet {
 			RequestDispatcher req = request.getRequestDispatcher("AffichageDistance.jsp");
 			req.forward(request, response);
 		} else {
-			HttpResponse<JsonNode> reponse;
-			String url = "http://api.openweathermap.org/data/2.5/weather?APPID=2129170164288096a566a7b4580ed806&lat=46.1331001556&lon=4.99858455549";
+			HttpResponse<JsonNode> reponse1;
+			HttpResponse<JsonNode> reponse2;
+			String url1 = "http://api.openweathermap.org/data/2.5/weather?APPID=2129170164288096a566a7b4580ed806&lat="
+					+ latitude1 + "&lon=" + longitude1 + "";
+			String url2 = "http://api.openweathermap.org/data/2.5/weather?APPID=2129170164288096a566a7b4580ed806&lat="
+					+ latitude2 + "&lon=" + longitude2 + "";
 			try {
 				DecimalFormat df = new DecimalFormat("###.##");
-				reponse = Unirest.get(url).asJson();
-				JsonElement jArray = JsonParser.parseString(reponse.getBody().toString());
-				JsonObject rootObject = jArray.getAsJsonObject();
-				String tempFVille1 = rootObject.getAsJsonObject("main").get("temp").toString();
+				reponse1 = Unirest.get(url1).asJson();
+				reponse2 = Unirest.get(url2).asJson();
+				JsonElement jArray1 = JsonParser.parseString(reponse1.getBody().toString());
+				JsonElement jArray2 = JsonParser.parseString(reponse2.getBody().toString());
+				JsonObject rootObject1 = jArray1.getAsJsonObject();
+				JsonObject rootObject2 = jArray2.getAsJsonObject();
+				String tempFVille1 = rootObject1.getAsJsonObject("main").get("temp").toString();
+				String tempFVille2 = rootObject2.getAsJsonObject("main").get("temp").toString();
 				double tempCVille1 = this.fahrenheitToCelcius(Double.parseDouble(tempFVille1));
+				double tempCVille2 = this.fahrenheitToCelcius(Double.parseDouble(tempFVille2));
 				session.setAttribute("tempsVille1", df.format(tempCVille1));
-				
+				session.setAttribute("tempsVille2", df.format(tempCVille2));
+
 			} catch (UnirestException e) {
 				e.printStackTrace();
 			}
@@ -109,4 +119,5 @@ public class calculDistance extends HttpServlet {
 		return temp - 273.15;
 	}
 
+	// TODO - AFFICHAGE PAR VILLE
 }

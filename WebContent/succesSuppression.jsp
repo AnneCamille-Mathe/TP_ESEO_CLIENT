@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Votre modification a bien été prise en compte Si vous voulez de nouveau
+	Votre suppression a bien été prise en compte Si vous voulez de nouveau
 	<a href=Visualiser.jsp> voir les villes, la météo ou lancer un
 		calcul</a>
 	<br>
-
 </body>
 </html>

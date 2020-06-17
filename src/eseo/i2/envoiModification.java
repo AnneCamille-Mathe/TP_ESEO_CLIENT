@@ -64,10 +64,8 @@ public class envoiModification extends HttpServlet {
 		String villeJSon = gson.toJson(ville);
 
 		try {
-			System.out.println("ICI : " + villeJSon);
 			HttpResponse<String> reponse = Unirest.put("http://localhost:8181" + "/ville")
 					.header("Content-type", "application/json").body(villeJSon).asString();
-			System.out.println(reponse.getBody());
 		} catch (UnirestException e) {
 			e.printStackTrace();
 		}

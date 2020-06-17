@@ -67,7 +67,7 @@
 											value="Voir la météo" name="action">
 									</FORM>
 									<br>
-									<a href="afficheVille"> Afficher les villes </a>
+									<a href="afficheVille"> Afficher les villes </a><br>
 								</div>
 							</div>
 						</div>

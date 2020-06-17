@@ -10,7 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<nav aria-label="Page navigation example">
+
+	<div class="container" style="background-color: aliceblue;">
+		<nav aria-label="Page navigation example">
 		<ul class="pagination">
 			<li class="page-item"><a class="page-link"
 				href="afficheVille?page=
@@ -30,13 +32,11 @@
 				<%=pagesS + 1%>">Next</a></li>
 		</ul>
 	</nav>
-
-	<div class="container" style="background-color: aliceblue;">
 		<div class="card border-0 shadow my-5">
 			<div class="card-body p-5">
 				<h1 class="font-weight-light">Liste des villes :</h1>
 				<br>
-				<div style="height: 4000px">
+				<div style="height: 2500px">
 					<FORM method="post" action="modification">
 						<%
 							ArrayList<Ville> liste2 = (ArrayList) request.getAttribute("villesPage");

@@ -20,7 +20,7 @@
 						est de
 						<%=session.getAttribute("distance")%>
 						km. <br> Si vous voulez de nouveau <a href=Visualiser.jsp>lancer
-							un nouveau calcul ou voir la météo</a><br>
+							un nouveau calcul, voir la météo ou les villes</a><br>
 					</p>
 
 				</div>

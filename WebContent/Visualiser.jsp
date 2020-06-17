@@ -66,6 +66,11 @@
 										<input class="btn btn-lg btn-primary btn-block" type="submit"
 											value="Voir la météo" name="action">
 									</FORM>
+									<br>
+									<FORM method="post" action="afficheVille">
+										<input class="btn btn-lg btn-primary btn-block" type="submit"
+											value="Voir les villes" name="action">
+									</FORM>
 								</div>
 							</div>
 						</div>

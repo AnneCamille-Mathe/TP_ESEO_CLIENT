@@ -29,7 +29,7 @@
 						est de
 						<%=session.getAttribute("tempsVille2")%>
 						°C. <br> <br> Si vous voulez de nouveau <a
-							href=Visualiser.jsp>voir la météo ou lancer un calcul</a><br>
+							href=Visualiser.jsp>voir la météo, les villes ou lancer un calcul</a><br>
 					</p>
 
 				</div>
